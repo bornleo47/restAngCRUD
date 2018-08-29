@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { UserserviceService } from '../../userservice.service';
-import { employee} from '../../employee';
-import {Router} from '@angular/router';
+import { UserserviceService } from '../../services/userService/userservice.service';
+import { employee } from '../../employee';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -11,42 +11,42 @@ import {Router} from '@angular/router';
 })
 export class ListusersComponent implements OnInit {
 
-  private employees:employee[];
+  private employees: employee[];
 
-  constructor(private userService:UserserviceService, private router:Router) { }
+  constructor(private userService: UserserviceService, private router: Router) { }
 
 
   ngOnInit() {
-      this.userService.getUsers().subscribe((employees:any)=>{
-        console.log(employees);
-        this.employees=employees;
-      },(error)=>{
-        console.log(error);
-      })
+    this.userService.getUsers().subscribe((employees: any) => {
+      console.log(employees);
+      this.employees = employees;
+    }, (error) => {
+      console.log(error);
+    })
   }
-  
-  
-  deleteUser(employee){
-    this.userService.deleteUser(employee.id).subscribe((data)=>{
-        this.employees.splice(this.employees.indexOf(employee),1);
-    },(error)=>{
+
+
+  deleteUser(employee) {
+    this.userService.deleteUser(employee.id).subscribe((data) => {
+      this.employees.splice(this.employees.indexOf(employee), 1);
+    }, (error) => {
       console.log(error);
     });
   }
 
 
-  updateUser(emp){  
+  updateUser(emp) {
     this.userService.setter(emp);
     this.router.navigate(['/form']);
   }
-  
 
-  newUser(){
-  let emp = new employee();
-   this.userService.setter(emp);
-   this.router.navigate(['/form']);
-   
-  
+
+  newUser() {
+    let emp = new employee();
+    this.userService.setter(emp);
+    this.router.navigate(['/form']);
+
+
   }
 
 

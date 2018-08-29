@@ -1,24 +1,22 @@
 <div class="container">
 
-  <form (ngSubmit)="processForm()">
-      
-    <div class="form group">
-     
-        <input type="hidden" name="id" class="form-control" [(ngModel)]="emp.id">
-    </div>
+    <form (ngSubmit)="processForm()">
+
+        <div class="form group">
+
+            <input type="hidden" name="id" class="form-control" [(ngModel)]="emp.id">
+        </div>
 
 
-      <div class="form group">
-          <label for="fullname">Name</label>
-          <input type="text" name="fullname" class="form-control" [(ngModel)]="emp.fullname">
-      </div>
+        <div class="form group">
+            <label for="fullname">Name</label>
+            <input type="text" name="fullname" class="form-control" [(ngModel)]="emp.fullname">
+        </div>
 
-      <div class="form group">
-          <label for="address">Address</label>
-          <input type="text" name="address" class="form-control" [(ngModel)]="emp.address">
-      </div>
-      <input type="submit" value="save" class="btn btn-success">
-  </form>
-</div>  
-
-
+        <div class="form group">
+            <label for="address">Address</label>
+            <input type="text" name="address" class="form-control" [(ngModel)]="emp.address">
+        </div>
+        <input type="submit" value="save" class="btn btn-success">
+    </form>
+</div>

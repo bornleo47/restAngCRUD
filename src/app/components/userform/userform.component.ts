@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { UserserviceService } from '../../userservice.service';
-import {employee} from '../../employee';
-import {Router} from '@angular/router';
+import { UserserviceService } from '../../services/userService/userservice.service';
+import { employee } from '../../employee';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -10,39 +10,39 @@ import {Router} from '@angular/router';
   styleUrls: ['./userform.component.css']
 })
 export class UserformComponent implements OnInit {
-public emp:employee;
+  public emp: employee;
 
 
-  constructor(private userService:UserserviceService, private router:Router) { }
+  constructor(private userService: UserserviceService, private router: Router) { }
 
   ngOnInit() {
-    this.emp=this.userService.getter();
+    this.emp = this.userService.getter();
   }
 
 
 
-       processForm(){
-      
-        if(this.emp.id==undefined){
-           this.userService.createEmp(this.emp).subscribe(()=>{
-             console.log(this.emp);
-            this.router.navigate(['/']);
-           },(error)=>{
-             console.log(error);
-           });
-    
+  processForm() {
 
-
-
-    }else{
-       this.userService.updateEmp(this.emp).subscribe((emp)=>{
-         console.log(emp);
+    if (this.emp.id == undefined) {
+      this.userService.createEmp(this.emp).subscribe(() => {
+        console.log(this.emp);
         this.router.navigate(['/']);
-       },(error)=>{
-         console.log(error);
-       });
+      }, (error) => {
+        console.log(error);
+      });
+
+
+
+
+    } else {
+      this.userService.updateEmp(this.emp).subscribe((emp) => {
+        console.log(emp);
+        this.router.navigate(['/']);
+      }, (error) => {
+        console.log(error);
+      });
     }
-   }
+  }
 
 
 
