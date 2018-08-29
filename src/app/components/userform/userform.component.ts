@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserserviceService } from '../../userservice.service';
 import {employee} from '../../employee';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -9,25 +10,23 @@ import {employee} from '../../employee';
   styleUrls: ['./userform.component.css']
 })
 export class UserformComponent implements OnInit {
-private emp:employee;
+public emp:employee;
 
 
-  constructor(private userService:UserserviceService) { }
+  constructor(private userService:UserserviceService, private router:Router) { }
 
   ngOnInit() {
     this.emp=this.userService.getter();
   }
 
 
-  
 
-
-       processForm(f){
+       processForm(){
       
-        if(f.value.id==undefined){
-           this.userService.createUser(f).subscribe((emp)=>{
-             console.log(emp);
-            //  this.rotuer.navigate(['/']);
+        if(this.emp.id==undefined){
+           this.userService.createEmp(this.emp).subscribe(()=>{
+             console.log(this.emp);
+            this.router.navigate(['/']);
            },(error)=>{
              console.log(error);
            });
@@ -36,9 +35,9 @@ private emp:employee;
 
 
     }else{
-       this.userService.updateUser(this.emp).subscribe((emp)=>{
+       this.userService.updateEmp(this.emp).subscribe((emp)=>{
          console.log(emp);
-        //  this.rotuer.navigate(['/']);
+        this.router.navigate(['/']);
        },(error)=>{
          console.log(error);
        });

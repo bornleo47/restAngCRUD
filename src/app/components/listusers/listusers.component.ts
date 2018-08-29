@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserserviceService } from '../../userservice.service';
 import { employee} from '../../employee';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -12,7 +13,7 @@ export class ListusersComponent implements OnInit {
 
   private employees:employee[];
 
-  constructor(private userService:UserserviceService) { }
+  constructor(private userService:UserserviceService, private router:Router) { }
 
 
   ngOnInit() {
@@ -36,11 +37,14 @@ export class ListusersComponent implements OnInit {
 
   updateUser(emp){  
     this.userService.setter(emp);
+    this.router.navigate(['/form']);
   }
   
+
   newUser(){
   let emp = new employee();
    this.userService.setter(emp);
+   this.router.navigate(['/form']);
    
   
   }

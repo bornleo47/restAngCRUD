@@ -30,17 +30,17 @@ return this.http.delete(this.baseUrl+'/empDelete/'+id);
 }
 
 
-createUser(f:any)
+createEmp(emp:employee)
 {
-return this.http.post(this.baseUrl+'/create', f.value);
+return this.http.post(this.baseUrl+'/create', emp);
 
 
 }
 
 
-updateUser(emp:employee)
+updateEmp(emp:employee)
 {
-return this.http.put(this.baseUrl+'/emp.id', emp);
+return this.http.put(this.baseUrl+'/create', emp);
 }
 
 setter(emp:employee){
